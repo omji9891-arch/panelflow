@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: var(--bg-paper);
+  --color-ink: var(--fg-ink);
+  --color-stamp: var(--brand-stamp);
+  --color-sage: var(--accent-sage);
+  --color-oxblood: var(--accent-oxblood);
+  --color-clay: var(--accent-clay);
+  --color-primary: var(--brand-stamp);
+  --color-pine: var(--accent-sage);
+  --color-surface: var(--bg-paper);
+  
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --bg-paper: #E9EAEC;
+  --fg-ink: #1B1F2B;
+  --brand-stamp: #35399E;
+  --accent-sage: #4C7A5E;
+  --accent-oxblood: #7A3B3B;
+  --accent-clay: #A67C52;
+}
+
+.dark {
+  --bg-paper: #11141D;
+  --fg-ink: #E9EAEC;
+  --brand-stamp: #5A5EDD;
+  --accent-sage: #66A37E;
+  --accent-oxblood: #E85B5B;
+  --accent-clay: #C49261;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@layer utilities {
+  /* Stamp Pulse Animation */
+  @keyframes stamp-pulse {
+    0% {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 4px 12px rgba(53, 57, 158, 0.4);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1) rotate(-2deg);
+      box-shadow: 0 1px 3px rgba(53, 57, 158, 0.2);
+      opacity: 1;
+    }
+  }
+
+  .animate-stamp-pulse {
+    animation: stamp-pulse 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:ml-sidebar {
+    margin-left: var(--sidebar-width);
+  }
+  .lg\:left-sidebar {
+    left: var(--sidebar-width);
+  }
+  .lg\:w-sidebar {
+    width: var(--sidebar-width);
+  }
+}
